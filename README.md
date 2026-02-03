@@ -6,14 +6,12 @@ Backend: Hosted on Render
 Frontend: Hosted on Netlify
 
 🔗 Live App:
-👉 [todolist0tutedude.netlify.app](https://todolist0tutedude.netlify.app/)
+👉 netlify front-end [todolist0tutedude.netlify.app](https://todolist0tutedude.netlify.app/)
 
-🔗 GitHub Repository:
-👉 (Add GitHub repo link here)
+ 👉render back-end  [([https://todo-list-hnig.onrender.com](https://todo-list-hnig.onrender.com/))
 
-🔗 Submission Form:
-👉 (Add Google Form link here)
-📌 Project Overview
+
+          📌 Project Overview
 
 This project is a full-stack To-Do List application built using Node.js, Express.js, MongoDB, and React.
 It is divided into two parts:
@@ -120,19 +118,12 @@ http://localhost:5173
 🔗  API Features Implemented
 
 Get  all  tasks
-
 Create  a new task
-
 Update  task details
-
 Delete  a task
-
 Update  task status
-
 Search  tasks (not yet )
-
 User  authentication
-
 User  profile API
 
 🧪 API Testing
