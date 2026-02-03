@@ -32,7 +32,7 @@ const [viewTask, setViewTask] = useState(null);
     async function fetchTasks() {
        try {
         const res = await axios.get(
-           `http://localhost:5000/tasks/${userId}`
+           `https://todo-list-backend.onrender.com/tasks/${userId}`
         );
      
        setTasks(res.data.task || []);
@@ -49,7 +49,7 @@ const [viewTask, setViewTask] = useState(null);
                   if (!title.trim()) return;
 
     try {
-      const res = await axios.post("http://localhost:5000/tasks", {
+      const res = await axios.post("https://todo-list-backend.onrender.com/tasks", {
           title,
          userid: userId,
         duedate: dueDate,
@@ -65,7 +65,7 @@ const [viewTask, setViewTask] = useState(null);
 const updateTask = async () => {
   try {
     const res = await axios.patch(
-      `http://localhost:5000/tasks/${userId}/${editTask._id}`,
+      `https://todo-list-backend.onrender.com/${userId}/${editTask._id}`,
       {
         title: editTitle,
         description: editDescription,
@@ -92,7 +92,7 @@ const updateTask = async () => {
   /* toggle*/
   const toggleStatus = async (taskId, status) => {
  try {
-      await axios.patch(`http://localhost:5000/tasks/${userId}/${taskId}`, {
+      await axios.patch(`https://todo-list-backend.onrender.com/tasks/${userId}/${taskId}`, {
         status: !status,
       });
 
@@ -112,7 +112,7 @@ const updateTask = async () => {
   const  deleteTask = async (taskId) => {
     try {
         console.log(`userid:${userId}`,`taskid${taskId}`)
-    await axios.delete(`http://localhost:5000/tasks/${userId}/${taskId}`);
+    await axios.delete(`https://todo-list-backend.onrender.com/tasks/${userId}/${taskId}`);
       setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (err) {
       setError("Failed to delete task");

@@ -12,7 +12,7 @@ function Login() {
             const handlelogin= async (e) => {
               e.preventDefault();
                try {
-    const res = await  axios.post("http://localhost:5000/auth/login",{name,password});
+    const res = await  axios.post("https://todo-list-backend.onrender.com/auth/login",{name,password});
     localStorage.setItem("token", res.data.token);
      localStorage.setItem("userId", res.data.userId);
     console.log("token :",localStorage.getItem("token"));
