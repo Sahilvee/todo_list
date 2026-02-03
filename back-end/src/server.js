@@ -5,7 +5,7 @@ dotenv.config();
 
 import app from "./app.js"
 
-const port=process.env.port;
+const port=process.env.PORT;
 dbconnection();
 
 app.listen(port,()=>{
