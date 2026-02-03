@@ -16,7 +16,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "https://todo-list-backend.onrender.com/auth/signup",
+        "https://todo-list-hnig.onrender.com/auth/signup",
         { name, password ,email }     
 
       );

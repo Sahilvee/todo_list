@@ -11,6 +11,10 @@ app.use(cors());
 app.use("/auth",authroutes);
 app.use("/users",userroutes);
 app.use("/tasks",tasksroutes);
+app.get("/", (req, res) => {
+    res.send("Backend API is running! ");
+});
+
 
 
 

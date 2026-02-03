@@ -11,7 +11,7 @@ useEffect(() => {
      const fetchUser = async () => {
       try {
         const res = await axios.get(
-                     `https://todo-list-backend.onrender.com/users/${localStorage.getItem("userId")}`
+                     `https://todo-list-hnig.onrender.com/users/${localStorage.getItem("userId")}`
         );
                 setUser(res.data.user);
       }  catch (err) {
