@@ -125,8 +125,8 @@ const updateTask = async () => {
             <input
           type="text"
           value={title}
-          placeholder="Enter task..."
-          onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter task..."
+             onChange={(e) => setTitle(e.target.value)}
           className="flex-1 border px-3 py-2 rounded"
         />
 
@@ -143,7 +143,7 @@ const updateTask = async () => {
         </button>
       </div>
 
-      {/* error show here */}
+           {/* error show here */}
       {error && (
              <div className="bg-red-100 text-red-700 p-2 m-4 rounded">
           {error}
@@ -152,7 +152,7 @@ const updateTask = async () => {
 
       {/* task list */}
       <div className="p-5 h-[80vh] overflow-auto space-y-3">
-        {tasks.length === 0 && (
+            {tasks.length === 0 && (
           <p className="text-gray-400 text-center">No tasks yet</p>
         )}
         {console.log(tasks)}

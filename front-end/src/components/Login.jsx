@@ -1,59 +1,111 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Link, Links ,useNavigate} from 'react-router-dom'
-import 'tailwindcss'
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 function Login() {
-     const [name,setname]=useState("");
-     const [password,setpassword]=useState("");
-     const [error,seterror]=useState("");
 
-      const navigate=useNavigate();
-     
-            const handlelogin= async (e) => {
-              e.preventDefault();
-               try {
-    const res = await  axios.post("https://todo-list-hnig.onrender.com/auth/login",{name,password});
-    localStorage.setItem("token", res.data.token);
-     localStorage.setItem("userId", res.data.userId);
-    console.log("token :",localStorage.getItem("token"));
-      console.log("userid :",localStorage.getItem("userId"));
-    navigate("/",{replace :true})
-     
-     } catch (error) {
-     if (error.response) seterror(error.response.data.message);
-      else seterror("Something went wrong");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+const [error, setError] = useState("");
+   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+       const handleLogin = async (e) => {
+    e.preventDefault();
+
+    setError("");
+    setLoading(true);
+
+    try {
+
+      const res = await axios.post(
+        "https://todo-list-hnig.onrender.com/auth/login",
+        { name, password }
+      );
+
+       localStorage.setItem("token", res.data.token);
+       localStorage.setItem("userId", res.data.userId);
+      console.log("token:", res.data.token);
+      console.log("userId:", res.data.userId);
+
+      navigate("/", { replace: true });
+
+    } catch (err) {
+
+         if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Something went wrong");
       }
-        
-      }
- 
 
-  return ( 
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    <>
-        <section className='min-h-screen   py-10 px-150 flex'>
-            <div className='flex-1 shadow-lg shadow-blue-500/40 rounded-xl  flex flex-col  items-center p-20'> <h1 className='text-3xl text-blue-400'> Login form</h1>
-            <hr className='w-full my-10' />
-            
+  return (
+             <section className="min-h-screen flex justify-center items-center py-10">
+      <div className="w-full max-w-md shadow-lg shadow-blue-500/40 rounded-xl p-10">
+        <h1 className="text-3xl text-blue-500 text-center font-semibold">
+          Login
+        </h1>
+        <hr className="my-6" />
+
         {error && (
-          <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">{error}</div>
+          <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">
+            {error}
+          </div>
         )}
-            <form className='flex mt-20 w-full  flex-1 flex-col justify-start  gap-4' onSubmit={handlelogin}>
-               <label  className='text-3xl text-blue-500 font-light text-shadow-blue-200' htmlFor="Name">Name</label>
-               <input required onChange={(e)=>{setname(e.target.value)}} className="border-2 border-blue-100   h-10 rounded-md" type="text" name="Name" id="Name" />
-               <label className='text-3xl text-blue-500 font-light text-shadow-blue-200' htmlFor='password'> password</label>
-               <input required onChange={(e)=>{setpassword(e.target.value)}} className="border-2  border-blue-100 h-10 rounded-md" type="password" name="password" id="password" />
-               <button type='submit'   className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Login</button>
-            </form>
-            <p className="mt-6 text-sm">
-          Don’t have an account?{" "}
-          <Link to="/signup" className= "text-blue-600 underline">
+        <form
+          onSubmit={handleLogin}
+          className="flex flex-col gap-4"
+        >
+
+          <label htmlFor="name" className="text-lg text-blue-600">
+            Name
+          </label>
+          <input
+            id="name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border h-10 rounded-md px-2"
+            type="text"
+            placeholder="Enter your name"
+          />
+
+          <label htmlFor="password" className="text-lg text-blue-600">
+            Password
+          </label>
+
+          <input
+            id="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border h-10 rounded-md px-2"
+            type="password"
+            placeholder="Enter password"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-50"
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+        <p className="mt-6 text-sm text-center">
+                   Don’t have an account?{" "}
+              <Link to="/signup" className="text-blue-600 underline">
             Signup
-          </Link>
+           </Link>
         </p>
-            </div>
-        </section>
-    </>
-  )
+
+      </div>
+
+    </section>
+  );
 }
 
-export default Login
+export default Login;
