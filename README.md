@@ -1,65 +1,94 @@
-                        📝 To-Do List Application (MERN Stack)
-                                 🌐 Deployment
+# 📝 To-Do List Application (MERN Stack)
 
-Backend: Hosted on Render
+---
 
-Frontend: Hosted on Netlify
+## 🌐 Deployment
 
-🔗 Live App:
-👉 netlify front-end [todolist0tutedude.netlify.app](https://todolist0tutedude.netlify.app/)
+* **Frontend (Netlify):**
+  https://todolist0tutedude.netlify.app/
 
- 👉render back-end  [([https://todo-list-hnig.onrender.com](https://todo-list-hnig.onrender.com/))
+* **Backend (Render):**
+  https://todo-list-hnig.onrender.com
 
- Testing  :- username-Sahil & password-123456
- 
-          📌 Project Overview
+---
 
-This project is a full-stack To-Do List application built using Node.js, Express.js, MongoDB, and React.
-It is divided into two parts:
+## 🔑 Demo Credentials
 
-Part 1: Backend API implementation
-Part 2: Frontend integration with React
+* **Username:** Sahil
+* **Password:** 123456
 
-The goal is to build a scalable, well-structured, and fully functional To-Do app with proper API integration and UI updates.
+---
 
-🎯 Objectives
+## 📌 Project Overview
 
+This is a **full-stack To-Do List application** built using the MERN stack:
 
-Part 1: Backend (Node.js + Express + MongoDB)
-Build RESTful APIs for a To-Do List application
-Follow MVC (Controller–Service–Routes) architecture
-Handle errors and validations properly
-Test APIs using Postman
+* **MongoDB**
+* **Express.js**
+* **React.js**
+* **Node.js**
 
-Part 2: Frontend (React)
-Integrate backend APIs with React frontend
-Perform CRUD operations on tasks
-Update UI dynamically based on API responses
-Handle loading states and errors
-Deploy frontend and backend
+The application is divided into:
 
-🛠 Tech Stack
-Backend
-Node.js
-Express.js
-MongoDB
-Mongoose
-JWT (Authentication)
-dotenv
-Frontend
-React.js
-Axios
-Tailwind CSS
-React Router
-Tools
-Postman (API testing)
-Git & GitHub
+* **Part 1:** Backend API development
+* **Part 2:** Frontend integration with React
 
-Netlify (Frontend Deployment)
-Render (Backend Deployment)
+### 🎯 Goal
 
-📂 Project Structure
-Backend
+To build a **scalable, structured, and fully functional** task management system with real-time UI updates and secure authentication.
+
+---
+
+## 🎯 Objectives
+
+### Backend (Node.js + Express + MongoDB)
+
+* Build RESTful APIs
+* Follow **MVC architecture (Controller–Service–Routes)**
+* Implement validation & error handling
+* Test APIs using Postman
+
+### Frontend (React)
+
+* Integrate APIs with UI
+* Perform full CRUD operations
+* Handle loading & error states
+* Deploy production-ready app
+
+---
+
+## 🛠 Tech Stack
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* dotenv
+
+### Frontend
+
+* React.js
+* Axios
+* Tailwind CSS
+* React Router
+
+### Tools
+
+* Postman
+* Git & GitHub
+* Netlify (Frontend)
+* Render (Backend)
+
+---
+
+## 📂 Project Structure
+
+### Backend
+
+```
 backend/
 │── controllers/
 │── services/
@@ -69,8 +98,11 @@ backend/
 │── config/
 │── server.js
 │── .env
+```
 
-Frontend
+### Frontend
+
+```
 frontend/
 │── src/
 │   ├── components/
@@ -78,96 +110,357 @@ frontend/
 │   ├── services/
 │   ├── App.jsx
 │   └── main.jsx
+```
 
-🔑 Environment Variables
+---
 
-Create a .env file in the backend root directory:
+## 🔑 Environment Variables
 
+Create a `.env` file in backend:
+
+```
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+```
 
-🚀 Backend Setup & Run
-#  Navigate to backend
-cd  backend
+---
 
-#  Install dependencies
+## 🚀 Setup Instructions
+
+### Backend
+
+```
+cd backend
 npm install
-
-#   Run server
 npm run dev
+```
 
+Server runs on:
 
-Server will start on:
+```
 http://localhost:5000
+```
 
-🚀     Frontend Setup & Run
-# Navigate to frontend
-cd   frontend
+---
 
-# Install dependencies
-npm  install
+### Frontend
 
-#  Start React  app
-npm  run dev
+```
+cd frontend
+npm install
+npm run dev
+```
 
+Frontend runs on:
 
-Frontend  runs on:
-
+```
 http://localhost:5173
+```
 
-🔗  API Features Implemented
+---
 
-Get  all  tasks
-Create  a new task
-Update  task details
-Delete  a task
-Update  task status
-Search  tasks (not yet )
-User  authentication
-User  profile API
+## 🛡 Additional Features
 
-🧪 API Testing
+* Protected routes (Frontend & Backend)
+* JWT-based authentication
+* Password hashing using bcrypt
+* Custom 404 Not Found page
+* Scalable role-based structure (extendable)
 
-All APIs were tested using Postman:
+---
 
-Correct status codes
-Error handling
-Validation checks
-Authentication flow
+## 🎨 Frontend Features
 
-🎨 Frontend Features
+* Dynamic task rendering
+* Real-time updates
+* Toast notifications
+* Error handling
+* Responsive UI
+* Search functionality
 
-Dynamic task rendering
-Real-time UI updates
-Loading indicators
-Error handling
-Responsive desig
-User-friendly interface
+---
 
+## 🔗 API Documentation
 
+### 🌐 Base URL
 
-🛡 Additional Features
- Protected routes (Frontend & Backend)
- JWT authentication flow
- Secure password hashing using bcrypt
- Custom 404 Not Found page
- Role-based access ready structure (extendable)
+```
+https://todo-list-hnig.onrender.com
+```
 
+---
 
-⚠️ Challenges Faced & Solutions
-1️⃣ API–Frontend Integration
+## 🔐 Authentication APIs
 
-Problem: Data was not updating  instantly
-Solution: Used proper state management and dependency handling in useEffect
+### 1️⃣ Signup
 
-2️⃣ Infinite API Calls
+**POST /auth/signup**
 
-Problem: useEffect dependency mistakes
-Solution: Removed unnecessary dependencies and followed React best practices
+Register a new user
 
-3️⃣ Error Handling
+**Request**
 
-Problem: Unclear error responses
-Solution: Implemented centralized error handling in backend and frontend
+```json
+{
+  "name": "Sahil",
+  "email": "sahil@gmail.com",
+  "password": "123456"
+}
+```
+
+**Response**
+
+```json
+{
+  "message": "User created successfully",
+  "user": {
+    "_id": "userId",
+    "name": "Sahil",
+    "email": "sahil@gmail.com"
+  }
+}
+```
+
+---
+
+### 2️⃣ Login
+
+**POST /auth/login**
+
+Login user and receive token
+
+**Request**
+
+```json
+{
+  "email": "sahil@gmail.com",
+  "password": "123456"
+}
+```
+
+**Response**
+
+```json
+{
+  "message": "Login successful",
+  "token": "JWT_TOKEN",
+  "userId": "userId"
+}
+```
+
+---
+
+## 🔒 Protected Routes
+
+All routes below require:
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+## 👤 User APIs
+
+### 3️⃣ Get User Profile
+
+**GET /users/:id**
+
+**Response**
+
+```json
+{
+  "user": {
+    "_id": "userId",
+    "name": "Sahil",
+    "email": "sahil@gmail.com",
+    "createdAt": "date"
+  }
+}
+```
+
+---
+
+### 4️⃣ Update User (Name Only)
+
+**PATCH /users/:id**
+
+**Request**
+
+```json
+{
+  "name": "New Name"
+}
+```
+
+**Response**
+
+```json
+{
+  "message": "User updated successfully",
+  "user": {
+    "_id": "userId",
+    "name": "New Name"
+  }
+}
+```
+
+---
+
+## ✅ Task APIs
+
+### 5️⃣ Get All Tasks
+
+**GET /tasks/:userid**
+
+**Response**
+
+```json
+{
+  "tasks": [
+    {
+      "_id": "taskId",
+      "title": "Task 1",
+      "description": "Desc",
+      "category": "Work",
+      "status": false,
+      "duedate": "2026-03-20"
+    }
+  ]
+}
+```
+
+---
+
+### 6️⃣ Create Task
+
+**POST /tasks**
+
+**Request**
+
+```json
+{
+  "title": "New Task",
+  "description": "Task description",
+  "category": "Study",
+  "userid": "userId",
+  "duedate": "2026-03-25",
+  "status": false
+}
+```
+
+---
+
+### 7️⃣ Update Task
+
+**PATCH /tasks/:userid/:taskid**
+
+**Request**
+
+```json
+{
+  "title": "Updated Task",
+  "description": "Updated desc",
+  "category": "Work",
+  "status": true,
+  "duedate": "2026-03-30"
+}
+```
+
+---
+
+### 8️⃣ Delete Task
+
+**DELETE /tasks/:userid/:taskid**
+
+**Response**
+
+```json
+{
+  "message": "Task deleted successfully"
+}
+```
+
+---
+
+### 9️⃣ Toggle Task Status
+
+(Handled via update API)
+
+```json
+{
+  "status": true
+}
+```
+
+---
+
+### 🔍 🔟 Search Tasks
+
+**GET /tasks/search?query=keyword**
+
+Search by:
+
+* Title
+* Description
+* Category
+
+---
+
+## ⚠️ Error Responses
+
+```json
+{
+  "error": "Unauthorized"
+}
+```
+
+```json
+{
+  "error": "Task not found"
+}
+```
+
+---
+
+## 🧪 Testing
+
+* Use **Postman**
+* Add header:
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+## ⚠️ Challenges & Solutions
+
+### 1️⃣ API–Frontend Integration
+
+* **Problem:** Data not updating instantly
+* **Solution:** Fixed state updates & useEffect dependencies
+
+### 2️⃣ Infinite API Calls
+
+* **Problem:** Wrong dependencies
+* **Solution:** Optimized dependency arrays
+
+### 3️⃣ Error Handling
+
+* **Problem:** Unclear responses
+* **Solution:** Centralized error handling
+
+---
+
+## 🚀 Future Improvements
+
+* Advanced search & filters
+* Role-based authorization
+* Notifications
+* CI/CD pipeline integration
+
+---
+
 
