@@ -5,22 +5,26 @@ import Sidebar from './Sidebar';
 import "tailwindcss";
 import { Outlet } from "react-router-dom";
 
-function Layout() {
+function Layout({ search, setSearch }) {
   return (
     <>
-    <div className=' flex flex-col min-h-screen'>
-         <Header></Header>
-  
-  <div className="flex flex-1">
-    <div className="w-64 p-4">
-      <Sidebar></Sidebar>
+   <div className="flex flex-col h-screen">
+
+  <Header search={search} setSearch={setSearch} />
+
+  <div className="flex flex-1 overflow-hidden">
+    
+    <div className="w-64 border-r bg-white p-4">
+   <Sidebar />
     </div>
-    <div className="flex-1 h-full bg-gray-200 p-4">
-      <Outlet />
+
+  <div className="flex-1  bg-gray-200 p-4">
+    <Outlet context={{ search }} />
     </div>
+
   </div>
- {/* <Footer></Footer>  if needed*/}
-    </div>
+
+</div>
 
     
     </>

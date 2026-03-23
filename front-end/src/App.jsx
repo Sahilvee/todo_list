@@ -9,25 +9,31 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Privateroute from './components/Privateroute'
 import Signup from './components/Signup'
+import NotFound from './components/NotFound';
 
 function App() {
-
+  const [search, setSearch] = useState("");
 
   return (
     <Routes>
-      <Route  path='/login' element={<Login/>}></Route>
-      <Route  path='/signup' element={<Signup/>}></Route>
-      <Route path='/' element=
-      {<Privateroute><Layout/></Privateroute>
-      }>
-      <Route index element={<Home></Home>}/>
+     
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
 
+                  {/* PRIVATE */}
+      <Route
+         element={
+          <Privateroute>
+         <Layout search={search} setSearch={setSearch} />
+          </Privateroute>
+        }
+      >
+         <Route index element={<Home search={search} />} />
+        <Route path="/user/:id" element={<Profile />} />
       </Route>
-      <Route path='/user/:id' element={<Profile/>}/>
-      
+        <Route path="*" element={<NotFound />} />
     </Routes>
-
-  )
+  );
 }
 
 export default App

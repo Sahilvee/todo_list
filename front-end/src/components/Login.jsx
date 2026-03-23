@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import api from "../api/api.js";
 function Login() {
 
   const [name, setName] = useState("");
@@ -18,21 +18,19 @@ const [error, setError] = useState("");
 
     try {
 
-      const res = await axios.post(
-        "https://todo-list-hnig.onrender.com/auth/login",
+      const res = await api.post(
+        "auth/login",
         { name, password }
       );
 
-       localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
        localStorage.setItem("userId", res.data.userId);
-      console.log("token:", res.data.token);
-      console.log("userId:", res.data.userId);
-
+    
       navigate("/", { replace: true });
 
     } catch (err) {
 
-         if (err.response && err.response.data.message) {
+    if (err.response && err.response.data.message) {
         setError(err.response.data.message);
       } else {
         setError("Something went wrong");
@@ -66,11 +64,10 @@ const [error, setError] = useState("");
           </label>
           <input
             id="name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="border h-10 rounded-md px-2"
-            type="text"
+              required
+              value={name}
+               onChange={(e) => setName(e.target.value)}
+               className="border h-10 rounded-md px-2" type="text"
             placeholder="Enter your name"
           />
 
@@ -80,30 +77,29 @@ const [error, setError] = useState("");
 
           <input
             id="password"
-            required
+              required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border h-10 rounded-md px-2"
-            type="password"
-            placeholder="Enter password"
+            className="border h-10 rounded-md px-2" type="password"  placeholder="Enter password"
           />
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-50"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ?  "Logging in..." : "Login"}
           </button>
         </form>
-        <p className="mt-6 text-sm text-center">
-                   Don’t have an account?{" "}
-              <Link to="/signup" className="text-blue-600 underline">
+        <p  className="mt-6  text-sm text-center">
+                     Don’t have an account?{" "}
+            <Link to="/signup"  className="text-blue-600 underline">
             Signup
            </Link>
         </p>
-
+ 
       </div>
-
+  
+   
     </section>
   );
 }
